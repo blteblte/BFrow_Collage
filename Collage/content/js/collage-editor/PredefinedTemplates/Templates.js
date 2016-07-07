@@ -78,6 +78,50 @@ var Collage;
                 });
             });
         };
+        PredefinedTemplates.VerticalStackSVG = function (callback) {
+            var offset = 10;
+            var heightOffset = 160;
+            var template = new Collage.SVG.SVGTemplate(offset);
+            var correctMatrix = new Collage.SVG.SVGCorrectMatrix(110, 0);
+            var clipBox1 = new Collage.SVG.SVGClipFromSVG(0, heightOffset * 0, offset, "content/svg/shape2.svg", correctMatrix);
+            Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox1, function (boundBox1) {
+                template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox1, clipBox1));
+                var clipBox2 = new Collage.SVG.SVGClipFromSVG(0, heightOffset * 1, offset, "content/svg/shape2.svg", correctMatrix);
+                Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox2, function (boundBox2) {
+                    template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox2, clipBox2));
+                    var clipBox3 = new Collage.SVG.SVGClipFromSVG(0, heightOffset * 2, offset, "content/svg/shape2.svg", correctMatrix);
+                    Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox3, function (boundBox3) {
+                        template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox3, clipBox3));
+                        callback(template);
+                    });
+                });
+            });
+        };
+        PredefinedTemplates.ComplexSVG = function (callback) {
+            var offset = 10;
+            var template = new Collage.SVG.SVGTemplate(offset);
+            var correctMatrix1 = new Collage.SVG.SVGCorrectMatrix(200, 400);
+            var clipBox1 = new Collage.SVG.SVGClipFromSVG(0, 0, offset, "content/svg/shape3.svg", correctMatrix1);
+            Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox1, function (boundBox1) {
+                template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox1, clipBox1));
+                var correctMatrix2 = new Collage.SVG.SVGCorrectMatrix(200, 400, 90);
+                var clipBox2 = new Collage.SVG.SVGClipFromSVG(180, 40, offset, "content/svg/shape3.svg", correctMatrix2);
+                Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox2, function (boundBox2) {
+                    template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox2, clipBox2));
+                    var correctMatrix3 = new Collage.SVG.SVGCorrectMatrix(200, 400, 180);
+                    var clipBox3 = new Collage.SVG.SVGClipFromSVG(168, 100, offset, "content/svg/shape3.svg", correctMatrix3);
+                    Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox3, function (boundBox3) {
+                        template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox3, clipBox3));
+                        var correctMatrix4 = new Collage.SVG.SVGCorrectMatrix(200, 400, 270);
+                        var clipBox4 = new Collage.SVG.SVGClipFromSVG(120, 140, offset, "content/svg/shape3.svg", correctMatrix4);
+                        Collage.Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox4, function (boundBox4) {
+                            template.AddItem(new Collage.SVG.SVGTemplateItem(boundBox4, clipBox4));
+                            callback(template);
+                        });
+                    });
+                });
+            });
+        };
     })(PredefinedTemplates = Collage.PredefinedTemplates || (Collage.PredefinedTemplates = {}));
 })(Collage || (Collage = {}));
 //# sourceMappingURL=Templates.js.map

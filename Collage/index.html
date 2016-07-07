@@ -27,8 +27,9 @@
     <div class="collage-editor">
         <div class="template-switcher">
             <select id="template-select">
-                <option value="1">VerticalStack</option>
-                <option value="2" selected="selected">HorizontalStack</option>
+                <option value="1" selected="selected">HorizontalStack</option>
+                <option value="2">VerticalStack</option>
+                <!--<option value="3">Complex</option>-->
             </select>
         </div>
         <!--
@@ -55,6 +56,7 @@
 
     <!--<script src="content/js/collage-editor/collage-editor.js"></script>-->
     <!-- collage stuff -->
+    <script src="content/js/collage-editor/SVG/SVGCorrectMatrix.js"></script>
     <script src="content/js/collage-editor/Images/ImageSource.js"></script>
     <script src="content/js/collage-editor/Pipe/MediaPipe.js"></script>
     <script src="content/js/collage-editor/Images/SVGImage.js"></script>
@@ -77,12 +79,23 @@
 
         $(function () {
 
-            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(
-                //Collage.PredefinedTemplates.VerticalStack(),
-                //Collage.PredefinedTemplates.HorizontalStack(),
-                Collage.PredefinedTemplates.HorizontalStackSVG,
-                true
-            ));
+            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.HorizontalStackSVG, true))
+
+            $('#template-select').change(function () {
+                var id = $(this).val();
+                var template;
+
+                switch (id) {
+                    case "1": template = Collage.PredefinedTemplates.HorizontalStackSVG;
+                        break;
+                    case "2": template = Collage.PredefinedTemplates.VerticalStackSVG;
+                        break;
+                    case "3": template = Collage.PredefinedTemplates.ComplexSVG;
+                        break;
+                }
+
+                collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template, true));
+            });
 
             $('#to-img').click(function () {
                 collage.ToImage(collage.Output);

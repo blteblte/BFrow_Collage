@@ -91,5 +91,64 @@
         });
     };
 
+    export var VerticalStackSVG: (c: (t: SVG.SVGTemplate) => void) => void = (callback: (t: SVG.SVGTemplate) => void) => {
+        let offset = 10;
+        let heightOffset = 160;
+        let template = new SVG.SVGTemplate(offset);
+
+        let correctMatrix = new SVG.SVGCorrectMatrix(110, 0);
+
+        let clipBox1 = new SVG.SVGClipFromSVG(0, heightOffset * 0, offset, "content/svg/shape2.svg", correctMatrix);
+        Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox1, (boundBox1) => {
+            template.AddItem(new SVG.SVGTemplateItem(boundBox1, clipBox1));
+
+            let clipBox2 = new SVG.SVGClipFromSVG(0, heightOffset * 1, offset, "content/svg/shape2.svg", correctMatrix);
+            Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox2, (boundBox2) => {
+                template.AddItem(new SVG.SVGTemplateItem(boundBox2, clipBox2));
+
+                let clipBox3 = new SVG.SVGClipFromSVG(0, heightOffset * 2, offset, "content/svg/shape2.svg", correctMatrix);
+                Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox3, (boundBox3) => {
+                    template.AddItem(new SVG.SVGTemplateItem(boundBox3, clipBox3));
+
+                    callback(template);
+                });
+            });
+        });
+    };
+
+
+    export var ComplexSVG: (c: (t: SVG.SVGTemplate) => void) => void = (callback: (t: SVG.SVGTemplate) => void) => {
+        let offset = 10;
+        let template = new SVG.SVGTemplate(offset);
+
+        let correctMatrix1 = new SVG.SVGCorrectMatrix(200, 400);
+        let clipBox1 = new SVG.SVGClipFromSVG(0, 0, offset, "content/svg/shape3.svg", correctMatrix1);
+
+        Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox1, (boundBox1) => {
+            template.AddItem(new SVG.SVGTemplateItem(boundBox1, clipBox1));
+
+            let correctMatrix2 = new SVG.SVGCorrectMatrix(200, 400, 90);
+            let clipBox2 = new SVG.SVGClipFromSVG(180, 40, offset, "content/svg/shape3.svg", correctMatrix2);
+            Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox2, (boundBox2) => {
+                template.AddItem(new SVG.SVGTemplateItem(boundBox2, clipBox2));
+
+                let correctMatrix3 = new SVG.SVGCorrectMatrix(200, 400, 180);
+                let clipBox3 = new SVG.SVGClipFromSVG(168, 100, offset, "content/svg/shape3.svg", correctMatrix3);
+                Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox3, (boundBox3) => {
+                    template.AddItem(new SVG.SVGTemplateItem(boundBox3, clipBox3));
+
+                    let correctMatrix4 = new SVG.SVGCorrectMatrix(200, 400, 270);
+                    let clipBox4 = new SVG.SVGClipFromSVG(120, 140, offset, "content/svg/shape3.svg", correctMatrix4);
+                    Convert.Shapes.FromClipBoxToBoundBox(offset, clipBox4, (boundBox4) => {
+                        template.AddItem(new SVG.SVGTemplateItem(boundBox4, clipBox4));
+
+                        callback(template);
+                    });
+
+                });
+            });
+        });
+    };
+
 
 }

@@ -5,7 +5,8 @@
             public x: number,
             public y: number,
             public offeset: number,
-            public svgUrl: string
+            public svgUrl: string,
+            public correctMatrix: SVGCorrectMatrix = null
         ) { }
 
         GetClipBox(s: Paper, callback) {
@@ -21,8 +22,26 @@
             //    callback(clip);
             //});
             Pipe.MediaPipe.GetSVGPath(this.svgUrl, (clip) => {
-                let matrix = `matrix(1,0,0,1,${this.x + this.offeset},${this.y + this.offeset})`;
-                clip.attr({ transform: matrix });
+
+                let tr_X = this.x + this.offeset;
+                let tr_Y = this.y + this.offeset;
+
+                if (this.correctMatrix !== null) {
+                    tr_X += this.correctMatrix.x;
+                    tr_Y += this.correctMatrix.y;
+                }
+
+                //let matrix = `matrix(1,0,0,1,${tr_X},${tr_Y});`;
+                let fnMatrix: any = Snap.Matrix;
+                let matrix = new fnMatrix(1, 0, 0, 1, tr_X, tr_Y);
+
+                if (this.correctMatrix !== null && this.correctMatrix.rotate !== null) {
+                    let bBox = clip.getBBox();
+                    matrix.rotate(this.correctMatrix.rotate, this.x, this.y);
+                }
+
+
+                clip.attr({ transform: matrix.toTransformString() });
                 if (s !== null) s.append(clip);
                 callback(clip);
             });

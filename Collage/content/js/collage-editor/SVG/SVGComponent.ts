@@ -37,7 +37,7 @@
                 this.background = this.s.rect(0, 0, 0, 0);
                 this.background.attr({fill: "white" });
 
-                var boundBoxAttr = { fill: "white" };
+                var boundBoxAttr = { fill: "white", fillOpacity: "0.0" };
                 var clipBoxAttr = { fill: "white", stroke: "gray", strokeWidth: 1 };
 
                 t.Template.forEach((v, i) => {

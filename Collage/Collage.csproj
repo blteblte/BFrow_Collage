@@ -68,6 +68,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="content\svg\shape2.svg" />
+    <Content Include="content\svg\shape3.svg" />
     <Content Include="packages.config" />
     <Content Include="content\js\vendor\canvg\bower.json" />
     <Content Include="content\js\vendor\canvg\component.json" />
@@ -438,6 +440,7 @@
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGClipFromSVG.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGCollageElement.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGComponent.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGCorrectMatrix.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGOptions.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGPositionState.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGTemplate.ts" />
