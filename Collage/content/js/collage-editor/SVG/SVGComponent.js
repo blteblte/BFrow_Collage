@@ -21,7 +21,7 @@ var Collage;
                     _this.elements = [];
                     _this.background = _this.s.rect(0, 0, 0, 0);
                     _this.background.attr({ fill: "white" });
-                    var boundBoxAttr = { fill: "white", fillOpacity: "0.0" };
+                    var boundBoxAttr = { fill: "white", fillOpacity: "0" };
                     var clipBoxAttr = { fill: "white", stroke: "gray", strokeWidth: 1 };
                     t.Template.forEach(function (v, i) {
                         var el = new SVG.SVGCollageElement();
@@ -116,7 +116,7 @@ var Collage;
                     callback: function (data) {
                         callback(data);
                     },
-                    renderer: "canvg"
+                    renderer: "native" //"canvg"
                 });
                 return false;
             };
