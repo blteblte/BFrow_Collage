@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8760234E-9F90-4E6E-8226-4B0547E5834C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Collage</RootNamespace>
+    <AssemblyName>Collage</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.7</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="content\js\vendor\canvg\bower.json" />
+    <Content Include="content\js\vendor\canvg\component.json" />
+    <Content Include="content\js\vendor\canvg\package.json" />
+    <Content Include="content\js\vendor\canvg\README.md" />
+    <Content Include="content\js\vendor\snapsvg\.gitignore" />
+    <Content Include="content\js\vendor\snapsvg\.gitmodules" />
+    <Content Include="content\js\vendor\snapsvg\bower.json" />
+    <Content Include="content\js\vendor\snapsvg\component.json" />
+    <Content Include="content\js\vendor\snapsvg\CONTRIBUTING" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\package.json" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\README.md" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\fonts\OpenSans-Light.ttf" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\fonts\SourceSansPro-Semibold.ttf" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\SnapAd.tmproj" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\.sass-cache\7eb2e4ecfecd432261de95f74b5302c6e0956ac9\screen.scssc" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\fonts\OpenSans-Light.ttf" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\fonts\SourceSansPro-Semibold.ttf" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\config.rb" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\sass\screen.scss" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcecodepro-regular-webfont.eot" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcecodepro-regular-webfont.ttf" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcecodepro-regular-webfont.woff" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-light-webfont.eot" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-light-webfont.ttf" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-light-webfont.woff" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-regular-webfont.eot" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-regular-webfont.ttf" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-regular-webfont.woff" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-semibold-webfont.eot" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-semibold-webfont.ttf" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-semibold-webfont.woff" />
+    <Content Include="content\js\vendor\snapsvg\dr.json" />
+    <Content Include="content\js\vendor\snapsvg\history.md" />
+    <Content Include="content\js\vendor\snapsvg\LICENSE" />
+    <Content Include="content\js\vendor\snapsvg\NOTICE" />
+    <Content Include="content\js\vendor\snapsvg\package.json" />
+    <Content Include="content\js\vendor\snapsvg\README.md" />
+    <Content Include="content\js\vendor\snapsvg\template.dot" />
+    <Content Include="content\js\vendor\todataurl\README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\css\collage.css" />
+    <Content Include="content\images\car.jpg" />
+    <Content Include="content\images\nomanssky.jpg" />
+    <Content Include="content\images\nomanssky_huge.jpg" />
+    <Content Include="content\images\piano.jpeg" />
+    <Content Include="content\images\space.jpg" />
+    <Content Include="content\images\space2.jpg" />
+    <Content Include="content\images\vikings_go_wild.jpg" />
+    <Content Include="content\images\windows.jpg" />
+    <Content Include="content\js\collage-editor\collage-editor.js" />
+    <Content Include="content\js\vendor\canvg\canvg.js" />
+    <Content Include="content\js\vendor\canvg\canvg.min.js" />
+    <Content Include="content\js\vendor\canvg\examples\callback.htm" />
+    <Content Include="content\js\vendor\canvg\examples\convert.htm" />
+    <Content Include="content\js\vendor\canvg\examples\flashcanvas.js" />
+    <Content Include="content\js\vendor\canvg\examples\flashcanvas.swf" />
+    <Content Include="content\js\vendor\canvg\examples\index.htm" />
+    <Content Include="content\js\vendor\canvg\MIT-LICENSE.txt" />
+    <Content Include="content\js\vendor\canvg\rgbcolor.js" />
+    <Content Include="content\js\vendor\canvg\StackBlur.js" />
+    <Content Include="content\js\vendor\canvg\svgs\1.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\10.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\11.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\12.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\13.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\14.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\15.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\16.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\17.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\18.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\19.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\2.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\20.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\21.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\22.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\23.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\24.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\25.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\26.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\27.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\28.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\29.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\3.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\30.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\31.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\32.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\33.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\34.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\35.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\36.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\4.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\5.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\6.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\7.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\8.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\9.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue104.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue106.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue112.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue114.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue115.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue116.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue117.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue121.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue122.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue125a.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue125b.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue128.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue132.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue134.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue135.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue137.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue138.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue142.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue144.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue145.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue158.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue161.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue166.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue172.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue175.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue176.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue178.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue179.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue180.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue181.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue182.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue183.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue184.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue187.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue195.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue196.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue197.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue202.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue202b.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue206.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue211.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue212.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue217.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue227.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue229.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue231.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue234.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue234b.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue234c.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue234d.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue234e.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue238.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue24.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue241.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue244.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue25.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue255.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue268.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue269.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue273.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue282.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue289.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue3.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue30.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue31.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue32.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue322.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue33.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue34.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue35.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue352.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue358.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue36.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue362.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue366.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue372.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue376.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue38.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue39.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue40.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue41.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue42.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue44.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue45.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue46.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue48.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue50.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue52.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue54.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue55.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue57.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue57b.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue66.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue67.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue70.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue71.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue73.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue75.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue76.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue77.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue79.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue8.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue82.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue85.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue88.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue89.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue91.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue94.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue97.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue98.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\issue99.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\lydianv-webfont.svg" />
+    <Content Include="content\js\vendor\canvg\svgs\swz721b-webfont.svg" />
+    <Content Include="content\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="content\js\vendor\jquery.mousewheel.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\backbone.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\jquery-1.9.0.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\main.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\path-animal.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\seedrandom.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\snap.svg.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\tree-face.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-game\js\underscore.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-map\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\animated-map\map.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\clock\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\illustrated-infographic-coffee\demo.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\illustrated-infographic-coffee\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\pattern\bg.png" />
+    <Content Include="content\js\vendor\snapsvg\demos\pattern\demo-card.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\pattern\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\Gruntfile.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\computer.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\heart.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\phone.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\assets\tablet.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\backup.jpg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\css\screen.css" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\index.min.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\js\main.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\js\vendor\modernizr.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\js\vendor\require.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\site\js\vendor\require.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\computer.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\heart.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\phone.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\assets\tablet.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\backup.jpg" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\css\screen.css" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\app.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\burst.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\device.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\heart.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\logo.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\app\mesh.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\main.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Color.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Core.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Geometry.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Light.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Material.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Math.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Mesh.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Object.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Plane.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Renderer.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Scene.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\SVGRenderer.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Triangle.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Vector3.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Vector4.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\fss\Vertex.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\modernizr.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\require.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\require.min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\snap.svg-min.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-ad\src\js\vendor\snap.svg.js" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-mascot\crocodile-1.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-mascot\crocodile-2.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-mascot\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-mascot\snap-logo.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\snap-mascot\style.css" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\1.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\2.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\3.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\4.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\index.html" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\mascot.svg" />
+    <Content Include="content\js\vendor\snapsvg\demos\tutorial\tutorial.html" />
+    <Content Include="content\js\vendor\snapsvg\dist\snap.svg-min.js" />
+    <Content Include="content\js\vendor\snapsvg\dist\snap.svg.js" />
+    <Content Include="content\js\vendor\snapsvg\doc\css\dr.css" />
+    <Content Include="content\js\vendor\snapsvg\doc\css\main.css" />
+    <Content Include="content\js\vendor\snapsvg\doc\css\prism.css" />
+    <Content Include="content\js\vendor\snapsvg\doc\css\topcoat-desktop-light.css" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcecodepro-regular-webfont.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-light-webfont.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-regular-webfont.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\sourcesanspro-semibold-webfont.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\fonts\stylesheet.css" />
+    <Content Include="content\js\vendor\snapsvg\doc\img\search.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\img\search_dark.svg" />
+    <Content Include="content\js\vendor\snapsvg\doc\js\prism.js" />
+    <Content Include="content\js\vendor\snapsvg\doc\reference.html" />
+    <Content Include="content\js\vendor\snapsvg\Gruntfile.js" />
+    <Content Include="content\js\vendor\snapsvg\src\align.js" />
+    <Content Include="content\js\vendor\snapsvg\src\amd-banner.js" />
+    <Content Include="content\js\vendor\snapsvg\src\amd-footer.js" />
+    <Content Include="content\js\vendor\snapsvg\src\attr.js" />
+    <Content Include="content\js\vendor\snapsvg\src\attradd.js" />
+    <Content Include="content\js\vendor\snapsvg\src\class.js" />
+    <Content Include="content\js\vendor\snapsvg\src\copy.js" />
+    <Content Include="content\js\vendor\snapsvg\src\element.js" />
+    <Content Include="content\js\vendor\snapsvg\src\equal.js" />
+    <Content Include="content\js\vendor\snapsvg\src\filter.js" />
+    <Content Include="content\js\vendor\snapsvg\src\matrix.js" />
+    <Content Include="content\js\vendor\snapsvg\src\mina.js" />
+    <Content Include="content\js\vendor\snapsvg\src\mouse.js" />
+    <Content Include="content\js\vendor\snapsvg\src\paper.js" />
+    <Content Include="content\js\vendor\snapsvg\src\path.js" />
+    <Content Include="content\js\vendor\snapsvg\src\set.js" />
+    <Content Include="content\js\vendor\snapsvg\src\svg.js" />
+    <Content Include="content\js\vendor\snapsvg\test.html" />
+    <Content Include="content\js\vendor\snapsvg\test\attradd.js" />
+    <Content Include="content\js\vendor\snapsvg\test\attrs.js" />
+    <Content Include="content\js\vendor\snapsvg\test\class.js" />
+    <Content Include="content\js\vendor\snapsvg\test\colors.js" />
+    <Content Include="content\js\vendor\snapsvg\test\element.js" />
+    <Content Include="content\js\vendor\snapsvg\test\filter.js" />
+    <Content Include="content\js\vendor\snapsvg\test\matrix.js" />
+    <Content Include="content\js\vendor\snapsvg\test\mina.js" />
+    <Content Include="content\js\vendor\snapsvg\test\paper.js" />
+    <Content Include="content\js\vendor\snapsvg\test\path.js" />
+    <Content Include="content\js\vendor\snapsvg\test\primitives.js" />
+    <Content Include="content\js\vendor\snapsvg\test\res\external-svg.svg" />
+    <Content Include="content\js\vendor\snapsvg\test\res\file-for-ajax.txt" />
+    <Content Include="content\js\vendor\snapsvg\test\set.js" />
+    <Content Include="content\js\vendor\snapsvg\test\snap-tests.js" />
+    <Content Include="content\js\vendor\snapsvg\test\system.js" />
+    <Content Include="content\js\vendor\snapsvg\test\test.html" />
+    <Content Include="content\js\vendor\todataurl\base64.js" />
+    <Content Include="content\js\vendor\todataurl\butterfly_test.html" />
+    <Content Include="content\js\vendor\todataurl\svg_todataurl.js" />
+    <Content Include="content\svg\shape.svg" />
+    <Content Include="index.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="content\js\collage-editor\Images\ImageSource.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\Images\SVGImage.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\Convert\Shapes.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\Pipe\MediaPipe.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\PredefinedTemplates\Templates.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\IClipBox.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGBoundBox.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGClipBox.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGClipFromSVG.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGCollageElement.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGComponent.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGOptions.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGPositionState.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGTemplate.ts" />
+    <TypeScriptCompile Include="content\js\collage-editor\SVG\SVGTemplateItem.ts" />
+    <TypeScriptCompile Include="content\js\typings\custom.d.ts" />
+    <TypeScriptCompile Include="content\js\typings\es6-promise.d.ts" />
+    <TypeScriptCompile Include="content\js\typings\jquery.d.ts" />
+    <TypeScriptCompile Include="content\js\typings\jqueryui.d.ts" />
+    <TypeScriptCompile Include="content\js\typings\snapsvg.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59931</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59931/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

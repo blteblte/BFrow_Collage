@@ -1,0 +1,12 @@
+﻿#svg{
+    height: 93%; width: 100%;
+    /*tmp - see bounds*/
+    /*border: 1px solid gray;*/
+}
+.collage-editor{
+    max-width: 800px;
+    padding-top: 60px;
+    margin: auto;
+}
+
+.template-switcher{margin-left: 10px; padding: 20px;}

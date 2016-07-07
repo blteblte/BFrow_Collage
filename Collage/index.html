@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>svg collage</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <script src="content/js/vendor/snapsvg/dist/snap.svg-min.js"></script>
+    <script src="content/js/vendor/snapsvg/src/paper.js"></script>
+    <script src="content/js/vendor/snapsvg/src/element.js"></script>
+
+    <script src="content/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="content/js/vendor/jquery.mousewheel.min.js"></script>
+    <script src="content/js/vendor/todataurl/svg_todataurl.js"></script>
+    <script src="content/js/vendor/canvg/canvg.js"></script>
+
+    <link href="content/css/collage.css" rel="stylesheet" />
+</head>
+<body>
+
+    <p>
+        Work in progress.
+        <br/>click box to append image
+    </p>
+    <div class="collage-editor">
+        <div class="template-switcher">
+            <select id="template-select">
+                <option value="1">VerticalStack</option>
+                <option value="2" selected="selected">HorizontalStack</option>
+            </select>
+        </div>
+        <!--
+            viewbox - inner coordinate system
+            w, h -> (DOM el) - exported image dimensions
+            style w,h - size of rendered svg
+         -->
+        <svg id="svg" width="800" height="600"></svg>
+
+        <div class="buttons">
+            <button id="to-img">SAVE</button>
+            |
+            <span class="ch-color" data-color="white"></span>
+            <span class="ch-color" data-color="#6699ff"></span>
+            <span class="ch-color" data-color="#800000"></span>
+            <span class="ch-color" data-color="#009900"></span>
+            <span class="ch-color" data-color="#cc6600"></span>
+            <span class="ch-color" data-color="black"></span>
+            |
+        </div>
+    </div>
+
+    <div id="output" style="margin-top: 50px;"></div>
+
+    <!--<script src="content/js/collage-editor/collage-editor.js"></script>-->
+    <!-- collage stuff -->
+    <script src="content/js/collage-editor/Images/ImageSource.js"></script>
+    <script src="content/js/collage-editor/Pipe/MediaPipe.js"></script>
+    <script src="content/js/collage-editor/Images/SVGImage.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGBoundBox.js"></script>
+    <script src="content/js/collage-editor/SVG/IClipBox.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGClipBox.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGClipFromSVG.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGTemplateItem.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGTemplate.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGOptions.js"></script>
+
+    <script src="content/js/collage-editor/Convert/Shapes.js"></script>
+    <script src="content/js/collage-editor/PredefinedTemplates/Templates.js"></script>
+
+    <script src="content/js/collage-editor/SVG/SVGCollageElement.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGPositionState.js"></script>
+    <script src="content/js/collage-editor/SVG/SVGComponent.js"></script>
+    <!-- end collage stuff -->
+    <script>
+
+        $(function () {
+
+            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(
+                //Collage.PredefinedTemplates.VerticalStack(),
+                //Collage.PredefinedTemplates.HorizontalStack(),
+                Collage.PredefinedTemplates.HorizontalStackSVG,
+                true
+            ));
+
+            $('#to-img').click(function () {
+                collage.ToImage(collage.Output);
+                return false;
+            });
+
+            $.each($('.ch-color'), function (i, v) {
+                var color = $(v).attr('data-color');
+                $(v).css({
+                    display: 'inline-block',
+                    width: '20px',
+                    height: '20px',
+                    backgroundColor: color,
+                    border: '1px solid gray',
+                    borderRadius: '2px',
+                    cursor: 'pointer'
+                });
+            });
+
+            $('.ch-color').click(function () {
+                var color = $(this).attr('data-color');
+                collage.SetBackgroundColor(color);
+            });
+
+        });
+
+
+
+
+
+        //var Templates = {
+        //    VerticalStack: {
+        //        Rect:
+        //        [
+        //            { x: 0, y: 0, w: 800, h: 200 },
+        //            { x: 0, y: 200, w: 800, h: 200 },
+        //            { x: 0, y: 400, w: 800, h: 200 }
+        //        ]
+        //    },
+        //    HorizontalStack: {
+        //        Rect:
+        //        [
+        //            { x: 0, y: 0, w: 800 / 3, h: 600 },
+        //            { x: (800 / 3), y: 0, w: 800 / 3, h: 600 },
+        //            { x: (800 / 3) * 2, y: 0, w: 800 / 3, h: 600 }
+        //        ]
+        //    }
+        //};
+
+        //$(function () {
+
+        //    $("#svg").Collage({ template: Templates.HorizontalStack });
+
+        //    $("#template-select").change(function () {
+        //        var template = Templates.VerticalStack;
+        //        if ($(this).val() == 2) {
+        //            template = Templates.HorizontalStack;
+        //        }
+
+        //        $("#svg").Collage({ template: template });
+        //    });
+
+        //    $(".collage-editor .buttons button").click(function () {
+        //        return false;
+        //    });
+        //});
+    </script>
+</body>
+</html>
