@@ -138,6 +138,8 @@
                 let pixelRatio = SVGPositionState._getDevicePixelRatio();
                 dx = dx * pixelRatio;
                 dy = dy * pixelRatio;
+
+                console.log("touch");
             }
 
             this.thisX = this.currentPositionX + dx;

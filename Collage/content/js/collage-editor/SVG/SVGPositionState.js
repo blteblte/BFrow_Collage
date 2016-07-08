@@ -112,6 +112,7 @@ var Collage;
                     var pixelRatio = SVGPositionState._getDevicePixelRatio();
                     dx = dx * pixelRatio;
                     dy = dy * pixelRatio;
+                    console.log("touch");
                 }
                 this.thisX = this.currentPositionX + dx;
                 this.thisY = this.currentPositionY + dy;
