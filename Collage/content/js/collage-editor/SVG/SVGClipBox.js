@@ -18,4 +18,3 @@ var Collage;
         SVG.SVGClipBox = SVGClipBox;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGClipBox.js.map

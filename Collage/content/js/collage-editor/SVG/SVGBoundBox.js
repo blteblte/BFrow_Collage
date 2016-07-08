@@ -21,4 +21,3 @@ var Collage;
         SVG.SVGBoundBox = SVGBoundBox;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGBoundBox.js.map

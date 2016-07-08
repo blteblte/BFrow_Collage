@@ -10,4 +10,3 @@ var Collage;
         SVG.SVGCollageElement = SVGCollageElement;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGCollageElement.js.map

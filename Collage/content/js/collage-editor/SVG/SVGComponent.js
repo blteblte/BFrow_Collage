@@ -175,4 +175,3 @@ var Collage;
         SVG.SVGComponent = SVGComponent;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGComponent.js.map

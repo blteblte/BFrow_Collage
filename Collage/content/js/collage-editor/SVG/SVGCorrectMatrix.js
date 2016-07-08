@@ -14,4 +14,3 @@ var Collage;
         SVG.SVGCorrectMatrix = SVGCorrectMatrix;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGCorrectMatrix.js.map

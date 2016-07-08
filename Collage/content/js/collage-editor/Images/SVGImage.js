@@ -29,4 +29,3 @@ var Collage;
         Images.SVGImage = SVGImage;
     })(Images = Collage.Images || (Collage.Images = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGImage.js.map

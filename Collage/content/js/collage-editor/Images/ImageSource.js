@@ -13,4 +13,3 @@ var Collage;
         Images.ImageSource = ImageSource;
     })(Images = Collage.Images || (Collage.Images = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=ImageSource.js.map

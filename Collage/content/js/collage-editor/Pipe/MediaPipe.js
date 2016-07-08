@@ -46,4 +46,3 @@ var Collage;
         Pipe.MediaPipe = MediaPipe;
     })(Pipe = Collage.Pipe || (Collage.Pipe = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=MediaPipe.js.map

@@ -48,4 +48,3 @@ var Collage;
         SVG.SVGClipFromSVG = SVGClipFromSVG;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGClipFromSVG.js.map

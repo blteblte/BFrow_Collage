@@ -16,4 +16,3 @@ var Collage;
         SVG.SVGTemplate = SVGTemplate;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGTemplate.js.map

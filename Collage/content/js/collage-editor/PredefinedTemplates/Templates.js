@@ -124,4 +124,3 @@ var Collage;
         };
     })(PredefinedTemplates = Collage.PredefinedTemplates || (Collage.PredefinedTemplates = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=Templates.js.map

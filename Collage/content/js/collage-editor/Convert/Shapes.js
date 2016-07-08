@@ -16,4 +16,3 @@ var Collage;
         Convert.Shapes = Shapes;
     })(Convert = Collage.Convert || (Collage.Convert = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=Shapes.js.map

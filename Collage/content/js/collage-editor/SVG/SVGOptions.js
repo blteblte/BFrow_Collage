@@ -13,4 +13,3 @@ var Collage;
         SVG.SVGOptions = SVGOptions;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGOptions.js.map

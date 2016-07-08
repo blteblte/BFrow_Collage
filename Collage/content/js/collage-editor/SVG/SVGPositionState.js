@@ -178,4 +178,3 @@ var Collage;
         SVG.SVGPositionState = SVGPositionState;
     })(SVG = Collage.SVG || (Collage.SVG = {}));
 })(Collage || (Collage = {}));
-//# sourceMappingURL=SVGPositionState.js.map
