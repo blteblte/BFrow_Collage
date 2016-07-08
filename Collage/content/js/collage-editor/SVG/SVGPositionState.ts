@@ -135,7 +135,7 @@
                 dx = dx - this.touchStartX;
                 dy = dy - this.touchStartY;
 
-                let pixelRatio = this._getDevicePixelRatio();
+                let pixelRatio = SVGPositionState._getDevicePixelRatio();
                 dx = dx * pixelRatio;
                 dy = dy * pixelRatio;
             }
@@ -194,7 +194,7 @@
             //    + "\n stickX: " + stickX + ", stickY: " + stickY);
         }
 
-        _getDevicePixelRatio() {
+        static _getDevicePixelRatio() {
             var ratio = 1;
             // To account for zoom, change to use deviceXDPI instead of systemXDPI
             if (window.screen.systemXDPI !== undefined && window.screen.logicalXDPI !== undefined && window.screen.systemXDPI > window.screen.logicalXDPI) {

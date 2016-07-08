@@ -109,7 +109,7 @@ var Collage;
                     }
                     dx = dx - this.touchStartX;
                     dy = dy - this.touchStartY;
-                    var pixelRatio = this._getDevicePixelRatio();
+                    var pixelRatio = SVGPositionState._getDevicePixelRatio();
                     dx = dx * pixelRatio;
                     dy = dy * pixelRatio;
                 }
@@ -160,7 +160,7 @@ var Collage;
                 //    + "\n thisX: " + thisX + ", thisY: " + thisY
                 //    + "\n stickX: " + stickX + ", stickY: " + stickY);
             };
-            SVGPositionState.prototype._getDevicePixelRatio = function () {
+            SVGPositionState._getDevicePixelRatio = function () {
                 var ratio = 1;
                 // To account for zoom, change to use deviceXDPI instead of systemXDPI
                 if (window.screen.systemXDPI !== undefined && window.screen.logicalXDPI !== undefined && window.screen.systemXDPI > window.screen.logicalXDPI) {

@@ -23,7 +23,7 @@
     <p style="font-size: 11px; font-style: italic;">
         Work in progress. <b style="color: blue;">Click box to append image.</b>
         <div style="font-family: Consolas; font-size: 8px;">
-            Current: TEST DPR;
+            Current: TEST DPR; DPR: <span id="dpr" style="color: red"></span>
         </div>
     </p>
     <div class="collage-editor">
@@ -80,6 +80,8 @@
     <script>
 
         $(function () {
+
+            $('#dpr').text(Collage.SVG.SVGPositionState._getDevicePixelRatio());
 
             var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.HorizontalStackSVG, true))
 
