@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\svg\shape2.svg" />
+    <Content Include="content\svg\shape3%282%29.svg" />
     <Content Include="content\svg\shape3.svg" />
     <Content Include="packages.config" />
     <Content Include="content\js\vendor\canvg\bower.json" />

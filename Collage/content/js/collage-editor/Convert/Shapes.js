@@ -5,10 +5,29 @@ var Collage;
         var Shapes = (function () {
             function Shapes() {
             }
-            Shapes.FromClipBoxToBoundBox = function (offeset, clipBox, callback) {
+            Shapes.FromClipBoxToBoundBox = function (correctMatrix, offeset, clipBox, callback) {
                 var box = clipBox.GetClipBox(null, function (f) {
                     var bBox = f.getBBox();
-                    callback(new Collage.SVG.SVGBoundBox(clipBox.x + offeset, clipBox.y + offeset, bBox.w, bBox.h));
+                    var setX = clipBox.x; //+ offeset;
+                    var setY = clipBox.y; //+ offeset;
+                    var fnMatrix = Snap.Matrix;
+                    var matrix = new fnMatrix;
+                    var cropMatrix = f.transform().localMatrix;
+                    matrix.add(cropMatrix);
+                    var matrixX = matrix.x(setX, setY);
+                    var matrixY = matrix.y(setY, setY);
+                    var rotation = matrix.split().rotate;
+                    if (rotation === 90)
+                        matrixX -= bBox.w;
+                    if (rotation === 180) {
+                        matrixX -= bBox.w;
+                        matrixY -= bBox.h;
+                    }
+                    if (rotation === 270 || rotation === -90)
+                        matrixY -= bBox.h;
+                    matrixX -= correctMatrix.x;
+                    matrixY -= correctMatrix.y;
+                    callback(new Collage.SVG.SVGBoundBox(matrixX, matrixY, bBox.w, bBox.h));
                 });
             };
             return Shapes;

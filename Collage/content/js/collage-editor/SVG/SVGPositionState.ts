@@ -26,7 +26,6 @@
         thisY: number;
 
         constructor(public v: SVGTemplateItem, public el: SVGCollageElement, public image: Images.ImageSource) {
-
             this.imageW = v.BoundBox.w;
             this.imageH = image.h * (v.BoundBox.w / image.w);
             this.imageX = v.BoundBox.x;
@@ -42,6 +41,31 @@
             this.maxX = cropBBox.x;
             this.maxY = cropBBox.y;
 
+            //correct for smaller images
+            //console.log("image", image.w, image.h, "bbox", v.BoundBox.w, v.BoundBox.h);
+            if (this.imageW < v.BoundBox.w) {
+                let value = v.BoundBox.w - this.imageW;
+
+                this.imageH += value * (this.imageH / this.imageW);
+                this.imageW += value;
+
+                this.imageX = v.BoundBox.x;
+                this.imageY = v.BoundBox.y;
+            }
+
+            if (this.imageH < v.BoundBox.h) {
+                let value = v.BoundBox.h - this.imageH;
+
+                this.imageW += value * (this.imageW / this.imageH);
+                this.imageH += value;
+
+                this.imageX = v.BoundBox.x;
+                this.imageY = v.BoundBox.y;
+            }
+            //
+
+
+            //get min/max
             if (cropBBox.w < cropBBox.h) {
                 this.minX = this.maxX - this.imageW + cropBBox.w;
                 this.minY = this.maxY;

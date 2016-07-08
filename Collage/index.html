@@ -29,9 +29,9 @@
     <div class="collage-editor">
         <div class="template-switcher">
             <select id="template-select">
-                <option value="1" selected="selected">HorizontalStack</option>
+                <option value="1">HorizontalStack</option>
                 <option value="2">VerticalStack</option>
-                <option value="3">Complex</option>
+                <option value="3" selected="selected">Complex</option>
             </select>
         </div>
         <!--
@@ -83,7 +83,7 @@
 
             $('#dpr').text(Collage.SVG.SVGPositionState._getDevicePixelRatio());
 
-            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.HorizontalStackSVG, true))
+            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.ComplexSVG, true))
 
             $('#template-select').change(function () {
                 var id = $(this).val();
