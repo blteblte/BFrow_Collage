@@ -64,7 +64,6 @@
 
     <div id="output" style="margin-top: 50px;"></div>
 
-    <!--<script src="content/js/collage-editor/collage-editor.js"></script>-->
     <!-- collage stuff -->
     <script src="content/js/collage-editor/SVG/SVGCorrectMatrix.js"></script>
     <script src="content/js/collage-editor/Images/ImageSource.js"></script>
@@ -84,6 +83,8 @@
     <script src="content/js/collage-editor/SVG/SVGCollageElement.js"></script>
     <script src="content/js/collage-editor/SVG/SVGPositionState.js"></script>
     <script src="content/js/collage-editor/SVG/SVGComponent.js"></script>
+
+    <script src="content/js/collage-editor/BfrowCollage.js"></script>
     <!-- end collage stuff -->
     <script>
 
@@ -91,7 +92,7 @@
 
             $('#dpr').text(Collage.SVG.SVGPositionState._getDevicePixelRatio());
 
-            var collage = new Collage.SVG.SVGComponent("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.ComplexSVG, true))
+            var collage = new BfrowCollage("svg", new Collage.SVG.SVGOptions(template = Collage.PredefinedTemplates.ComplexSVG, true))
 
             $('#template-select').change(function () {
                 var id = $(this).val();

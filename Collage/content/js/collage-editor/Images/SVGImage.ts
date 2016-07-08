@@ -9,6 +9,7 @@
         }
 
 
+        //todo - if image fails to load
         private _getImageParams(url: string, callback: (s: ImageSource) => void) {
 
             var image = new Image();

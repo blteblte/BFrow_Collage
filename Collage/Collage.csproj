@@ -128,7 +128,6 @@
     <Content Include="content\images\space2.jpg" />
     <Content Include="content\images\vikings_go_wild.jpg" />
     <Content Include="content\images\windows.jpg" />
-    <Content Include="content\js\collage-editor\collage-editor.js" />
     <Content Include="content\js\vendor\canvg\canvg.js" />
     <Content Include="content\js\vendor\canvg\canvg.min.js" />
     <Content Include="content\js\vendor\canvg\examples\callback.htm" />
@@ -430,6 +429,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="content\js\collage-editor\BfrowCollage.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\Images\ImageSource.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\Images\SVGImage.ts" />
     <TypeScriptCompile Include="content\js\collage-editor\Convert\Shapes.ts" />

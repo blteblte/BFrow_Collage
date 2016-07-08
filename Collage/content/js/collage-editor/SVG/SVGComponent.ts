@@ -21,6 +21,8 @@
                 this.$svg.html('');
             }
 
+            //TODO: call just once per window/document instance
+            //TODO: remove when component disposed
             document.body.addEventListener('touchmove', function (event) {
                 event.preventDefault();
             }, false);

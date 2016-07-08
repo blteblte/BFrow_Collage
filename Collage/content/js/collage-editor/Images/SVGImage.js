@@ -9,6 +9,7 @@ var Collage;
             SVGImage.prototype.LoadImage = function (callback) {
                 this._getImageParams(this.imageUrl, callback);
             };
+            //todo - if image fails to load
             SVGImage.prototype._getImageParams = function (url, callback) {
                 var image = new Image();
                 image.onload = function () {

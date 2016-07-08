@@ -7,6 +7,7 @@
         private static images = {};
         private static svgs = {};
 
+        //TODO: check if image fails to load
         /**
          * Gets image from image pipe
          * @param url
@@ -24,6 +25,7 @@
             }
         }
 
+        //TODO: check if svg fails to load
         /**
          * Get svg from svg pipe
          * @param url

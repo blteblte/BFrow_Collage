@@ -6,6 +6,7 @@ var Collage;
         var MediaPipe = (function () {
             function MediaPipe() {
             }
+            //TODO: check if image fails to load
             /**
              * Gets image from image pipe
              * @param url
@@ -22,6 +23,7 @@ var Collage;
                     });
                 }
             };
+            //TODO: check if svg fails to load
             /**
              * Get svg from svg pipe
              * @param url
