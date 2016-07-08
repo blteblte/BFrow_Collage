@@ -21,7 +21,9 @@
                 this.$svg.html('');
             }
 
-            //this.SetViewBox(0, 0, SVGComponent.viewBoxW, SVGComponent.viewBoxH);
+            document.body.addEventListener('touchmove', function (event) {
+                event.preventDefault();
+            }, false);
 
             this.s = Snap(svgId);
             this.InitializeTemplate(options.template);
@@ -37,78 +39,91 @@
                 this.background = this.s.rect(0, 0, 0, 0);
                 this.background.attr({fill: "white" });
 
-                var boundBoxAttr = { fill: "white", fillOpacity: "0" };
-                var clipBoxAttr = { fill: "white", stroke: "gray", strokeWidth: 1 };
-
-                t.Template.forEach((v, i) => {
-                    let el = new SVGCollageElement();
-                    el.boundBox = v.BoundBox.ToRect(this.s, boundBoxAttr);
-                    v.ClipBox.GetClipBox(this.s, (clipBox) => {
-                        el.mask = clipBox;
-                        el.mask.attr(clipBoxAttr);
-                        $(el.mask.node)
-                            .css({ cursor: "pointer" })
-                            .click(() => {
-
-                                if (!el.image) {
-
-                                    this.GetImage(i, (image: Images.ImageSource) => {
-
-                                        let posState = new SVGPositionState(v, el, image);
-
-
-                                        el.image = this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
-                                        el.image.attr({ clip: el.mask });
-
-                                        $(el.image.node).on('mousewheel', function (event) {
-                                            posState.OnZoom(event, el.image);
-                                        });
-
-                                        var move = function (dx, dy) {
-                                            posState.OnMove(dx, dy, this);
-                                        };
-
-                                        var start = function () {
-                                            posState.OnMoveStart(this);
-                                        };
-
-                                        var stop = function () {
-                                            posState.OnMoveStop(this);
-                                        };
-
-                                        el.image.drag(move, start, stop);
-
-
-
-                                        el.image.touchstart(function (event) {
-                                            posState.OnMoveStart(el.image);
-                                        });
-
-                                        el.image.touchmove(function (event) {
-                                            var firstTouch = event.changedTouches[0];
-                                            posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
-                                        });
-
-                                        el.image.touchend(function (event) {
-                                            posState.OnMoveStop(el.image, mina.bounce, true);
-                                        });
-
-                                    });
-                                }
-                            });
-                    });
-
-                    this.elements.push(el);
-
-                    if (i + 1 === t.Template.length) {
-                        this.SetViewBoxToContent();
-                    }
-
-                });
-
-
+                this._drawElements(t);
             });
 
+        }
+
+        private _drawElements(t: SVGTemplate) {
+
+            var boundBoxAttr = { fill: "white" };
+
+            t.Template.forEach((v, i) => {
+                let el = new SVGCollageElement();
+                el.boundBox = v.BoundBox.ToRect(this.s, boundBoxAttr);
+                this.elements.push(el);
+
+                if (i + 1 === t.Template.length) {
+                    this._drawMasks(t);
+                }
+            });
+        }
+
+        private _drawMasks(t: SVGTemplate) {
+
+            var clipBoxAttr = { fill: "white", stroke: "gray", strokeWidth: 1 };
+
+            t.Template.forEach((v, i) => {
+                v.ClipBox.GetClipBox(this.s, (clipBox) => {
+                    let el = this.elements[i];
+                    el.mask = clipBox;
+                    el.mask.attr(clipBoxAttr);
+                    $(el.mask.node)
+                        .css({ cursor: "pointer" })
+                        .click(() => {
+
+                            if (!el.image) {
+
+                                this.GetImage(i, (image: Images.ImageSource) => {
+
+                                    let posState = new SVGPositionState(v, el, image);
+
+
+                                    el.image = this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
+                                    el.image.attr({ clip: el.mask });
+
+                                    $(el.image.node).on('mousewheel', function (event) {
+                                        posState.OnZoom(event, el.image);
+                                    });
+
+                                    var move = function (dx, dy) {
+                                        posState.OnMove(dx, dy, this);
+                                    };
+
+                                    var start = function () {
+                                        posState.OnMoveStart(this);
+                                    };
+
+                                    var stop = function () {
+                                        posState.OnMoveStop(this);
+                                    };
+
+                                    el.image.drag(move, start, stop);
+
+
+
+                                    el.image.touchstart(function (event) {
+                                        posState.OnMoveStart(el.image);
+                                    });
+
+                                    el.image.touchmove(function (event) {
+                                        var firstTouch = event.changedTouches[0];
+                                        posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
+                                    });
+
+                                    el.image.touchend(function (event) {
+                                        posState.OnMoveStop(el.image, mina.bounce, true);
+                                    });
+
+                                });
+                            }
+                        });
+                });
+
+                if (i + 1 === t.Template.length) {
+                    this.SetViewBoxToContent();
+                }
+            });
         }
 
         SetBackgroundColor(color: string) {
@@ -164,7 +179,7 @@
                 callback: (data) => {
                     callback(data);
                 },
-                renderer: "native" //"canvg"
+                renderer: "canvg" //"canvg", "native"
             })
 
             return false;

@@ -131,8 +131,13 @@
                     this.touchStartX = dx;
                     this.touchStartY = dy;
                 }
+
                 dx = dx - this.touchStartX;
                 dy = dy - this.touchStartY;
+
+                let pixelRatio = this._getDevicePixelRatio();
+                dx = dx * pixelRatio;
+                dy = dy * pixelRatio;
             }
 
             this.thisX = this.currentPositionX + dx;
@@ -187,6 +192,19 @@
             //    + "\n minX: " + minX + ", maxX: " + maxX + ", minY: " + minY + ", maxY: " + maxY
             //    + "\n thisX: " + thisX + ", thisY: " + thisY
             //    + "\n stickX: " + stickX + ", stickY: " + stickY);
+        }
+
+        _getDevicePixelRatio() {
+            var ratio = 1;
+            // To account for zoom, change to use deviceXDPI instead of systemXDPI
+            if (window.screen.systemXDPI !== undefined && window.screen.logicalXDPI !== undefined && window.screen.systemXDPI > window.screen.logicalXDPI) {
+                // Only allow for values > 1
+                ratio = window.screen.systemXDPI / window.screen.logicalXDPI;
+            }
+            else if (window.devicePixelRatio !== undefined) {
+                ratio = window.devicePixelRatio;
+            }
+            return ratio;
         }
 
     }

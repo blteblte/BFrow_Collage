@@ -5,8 +5,7 @@
 }
 .collage-editor{
     max-width: 800px;
-    padding-top: 60px;
     margin: auto;
 }
 
-.template-switcher{margin-left: 10px; padding: 20px;}
+.template-switcher{margin-left: 10px; padding: 4px;}
