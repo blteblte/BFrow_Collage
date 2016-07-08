@@ -179,7 +179,9 @@
                 callback: (data) => {
                     callback(data);
                 },
-                renderer: "canvg" //"canvg", "native"
+                //renderer: "canvg" //"canvg", "native"
+                //test
+                renderer: $('#renderer').val()
             })
 
             return false;

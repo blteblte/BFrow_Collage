@@ -27,12 +27,20 @@
         </div>
     </p>
     <div class="collage-editor">
-        <div class="template-switcher">
-            <select id="template-select">
-                <option value="1">HorizontalStack</option>
-                <option value="2">VerticalStack</option>
-                <option value="3" selected="selected">Complex</option>
-            </select>
+        <div class="template-switcher" style="font-size: 11px;">
+            <span style="display: inline-block">
+                Template: <select id="template-select">
+                    <option value="1">HorizontalStack</option>
+                    <option value="2">VerticalStack</option>
+                    <option value="3" selected="selected">Complex</option>
+                </select>
+            </span>
+            <span style="display: inline-block;">
+                Renderer: <select id="renderer">
+                    <option value="native" selected="selected">native (best quality)</option>
+                    <option value="canvg">canvg (faster)</option>
+                </select>
+            </span>
         </div>
         <!--
             viewbox - inner coordinate system
