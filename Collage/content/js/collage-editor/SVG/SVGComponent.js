@@ -49,42 +49,46 @@ var Collage;
                         $(el.mask.node)
                             .css({ cursor: "pointer" })
                             .click(function () {
-                            if (!el.image) {
-                                _this.GetImage(i, function (image) {
-                                    var posState = new SVG.SVGPositionState(v, el, image);
-                                    el.image = _this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
-                                    el.image.attr({ clip: el.mask });
-                                    $(el.image.node).on('mousewheel', function (event) {
-                                        posState.OnZoom(event, el.image);
-                                    });
-                                    var move = function (dx, dy) {
-                                        posState.OnMove(dx, dy, this);
-                                    };
-                                    var start = function () {
-                                        posState.OnMoveStart(this);
-                                    };
-                                    var stop = function () {
-                                        posState.OnMoveStop(this);
-                                    };
-                                    el.image.drag(move, start, stop);
-                                    el.image.touchstart(function (event) {
-                                        posState.OnMoveStart(el.image);
-                                    });
-                                    el.image.touchmove(function (event) {
-                                        var firstTouch = event.changedTouches[0];
-                                        posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
-                                    });
-                                    el.image.touchend(function (event) {
-                                        posState.OnMoveStop(el.image, mina.bounce, true);
-                                    });
-                                });
-                            }
+                            _this._appendImage(el, v, i);
                         });
                     });
                     if (i + 1 === t.Template.length) {
                         _this.SetViewBoxToContent();
                     }
                 });
+            };
+            SVGComponent.prototype._appendImage = function (el, v, url) {
+                var _this = this;
+                if (!el.image) {
+                    this._getImage(url, function (image) {
+                        var posState = new SVG.SVGPositionState(v, el, image);
+                        el.image = _this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
+                        el.image.attr({ clip: el.mask });
+                        $(el.image.node).on('mousewheel', function (event) {
+                            posState.OnZoom(event, el.image);
+                        });
+                        var move = function (dx, dy) {
+                            posState.OnMove(dx, dy, this);
+                        };
+                        var start = function () {
+                            posState.OnMoveStart(this);
+                        };
+                        var stop = function () {
+                            posState.OnMoveStop(this);
+                        };
+                        el.image.drag(move, start, stop);
+                        el.image.touchstart(function (event) {
+                            posState.OnMoveStart(el.image);
+                        });
+                        el.image.touchmove(function (event) {
+                            var firstTouch = event.changedTouches[0];
+                            posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
+                        });
+                        el.image.touchend(function (event) {
+                            posState.OnMoveStop(el.image, mina.bounce, true);
+                        });
+                    });
+                }
             };
             SVGComponent.prototype.SetBackgroundColor = function (color) {
                 this.background.animate({ fill: color }, 200);
@@ -142,22 +146,26 @@ var Collage;
                 img.setAttribute("src", data);
                 $('#output').append(img);
             };
-            SVGComponent.prototype.GetImage = function (i, callback) {
-                //test
+            SVGComponent.prototype._getImage = function (i, callback) {
                 var src = "";
-                if (i == 0) {
-                    src = "content/images/car.jpg";
+                if (typeof i == "number") {
+                    //test
+                    if (i == 0) {
+                        src = "content/images/car.jpg";
+                    }
+                    else if (i == 1) {
+                        src = "content/images/space2.jpg";
+                    }
+                    else if (i == 2) {
+                        src = "content/images/space.jpg";
+                    }
+                    else if (i == 3) {
+                        src = "content/images/piano.jpeg";
+                    }
                 }
-                else if (i == 1) {
-                    src = "content/images/space2.jpg";
+                else {
+                    src = i;
                 }
-                else if (i == 2) {
-                    src = "content/images/space.jpg";
-                }
-                else if (i == 3) {
-                    src = "content/images/piano.jpeg";
-                }
-                //
                 //var svgImage = new Images.SVGImage(src);
                 //svgImage.LoadImage(callback);
                 Collage.Pipe.MediaPipe.GetImage(src, function (imageSource) {

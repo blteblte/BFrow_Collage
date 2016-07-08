@@ -44,7 +44,7 @@
 
         }
 
-        private _drawElements(t: SVGTemplate) {
+        protected _drawElements(t: SVGTemplate) {
 
             var boundBoxAttr = { fill: "white" };
 
@@ -59,7 +59,7 @@
             });
         }
 
-        private _drawMasks(t: SVGTemplate) {
+        protected _drawMasks(t: SVGTemplate) {
 
             var clipBoxAttr = { fill: "white", stroke: "gray", strokeWidth: 1 };
 
@@ -71,52 +71,7 @@
                     $(el.mask.node)
                         .css({ cursor: "pointer" })
                         .click(() => {
-
-                            if (!el.image) {
-
-                                this.GetImage(i, (image: Images.ImageSource) => {
-
-                                    let posState = new SVGPositionState(v, el, image);
-
-
-                                    el.image = this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
-                                    el.image.attr({ clip: el.mask });
-
-                                    $(el.image.node).on('mousewheel', function (event) {
-                                        posState.OnZoom(event, el.image);
-                                    });
-
-                                    var move = function (dx, dy) {
-                                        posState.OnMove(dx, dy, this);
-                                    };
-
-                                    var start = function () {
-                                        posState.OnMoveStart(this);
-                                    };
-
-                                    var stop = function () {
-                                        posState.OnMoveStop(this);
-                                    };
-
-                                    el.image.drag(move, start, stop);
-
-
-
-                                    el.image.touchstart(function (event) {
-                                        posState.OnMoveStart(el.image);
-                                    });
-
-                                    el.image.touchmove(function (event) {
-                                        var firstTouch = event.changedTouches[0];
-                                        posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
-                                    });
-
-                                    el.image.touchend(function (event) {
-                                        posState.OnMoveStop(el.image, mina.bounce, true);
-                                    });
-
-                                });
-                            }
+                            this._appendImage(el, v, i);
                         });
                 });
 
@@ -124,6 +79,54 @@
                     this.SetViewBoxToContent();
                 }
             });
+        }
+
+        protected _appendImage(el: SVGCollageElement, v: SVGTemplateItem, url: number | string) {
+            if (!el.image) {
+
+                this._getImage(url, (image: Images.ImageSource) => {
+
+                    let posState = new SVGPositionState(v, el, image);
+
+
+                    el.image = this.s.image(image.src, posState.imageX, posState.imageY, posState.imageW, posState.imageH);
+                    el.image.attr({ clip: el.mask });
+
+                    $(el.image.node).on('mousewheel', function (event) {
+                        posState.OnZoom(event, el.image);
+                    });
+
+                    var move = function (dx, dy) {
+                        posState.OnMove(dx, dy, this);
+                    };
+
+                    var start = function () {
+                        posState.OnMoveStart(this);
+                    };
+
+                    var stop = function () {
+                        posState.OnMoveStop(this);
+                    };
+
+                    el.image.drag(move, start, stop);
+
+
+
+                    el.image.touchstart(function (event) {
+                        posState.OnMoveStart(el.image);
+                    });
+
+                    el.image.touchmove(function (event) {
+                        var firstTouch = event.changedTouches[0];
+                        posState.OnMove(firstTouch.clientX, firstTouch.clientY, el.image, true);
+                    });
+
+                    el.image.touchend(function (event) {
+                        posState.OnMoveStop(el.image, mina.bounce, true);
+                    });
+
+                });
+            }
         }
 
         SetBackgroundColor(color: string) {
@@ -193,23 +196,29 @@
             $('#output').append(img);
         }
 
-        GetImage(i: number, callback: (s: Images.ImageSource) => void) {
+        protected _getImage(i: number | string, callback: (s: Images.ImageSource) => void) {
 
-            //test
             var src = "";
-            if (i == 0) {
-                src = "content/images/car.jpg";
+
+            if (typeof i == "number") {
+                //test
+                if (i == 0) {
+                    src = "content/images/car.jpg";
+                }
+                else if (i == 1) {
+                    src = "content/images/space2.jpg"
+                }
+                else if (i == 2) {
+                    src = "content/images/space.jpg";
+                }
+                else if (i == 3) {
+                    src = "content/images/piano.jpeg"
+                }
+                //
             }
-            else if (i == 1) {
-                src = "content/images/space2.jpg"
+            else {
+                src = <string><any>i;
             }
-            else if (i == 2) {
-                src = "content/images/space.jpg";
-            }
-            else if (i == 3) {
-                src = "content/images/piano.jpeg"
-            }
-            //
 
 
             //var svgImage = new Images.SVGImage(src);
